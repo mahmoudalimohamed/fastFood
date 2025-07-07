@@ -1,7 +1,9 @@
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
+import useAuthStore from "@/store/auth.store";
 import cn from "clsx";
 import {
+  Button,
   FlatList,
   Image,
   Pressable,
@@ -10,7 +12,12 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 export default function index() {
+  const LogoutButton = () => {
+    const logout = useAuthStore((state) => state.logout);
+    return <Button title="Logout" onPress={logout} />;
+  };
   const listItemes = ({ item, index }) => {
     const isEven = index % 2 === 0;
     return (
@@ -71,6 +78,7 @@ export default function index() {
         renderItem={listItemes}
         ListHeaderComponent={listHeader}
         contentContainerClassName="pd-28 px-1"
+        ListFooterComponent={LogoutButton}
       />
     </SafeAreaView>
   );

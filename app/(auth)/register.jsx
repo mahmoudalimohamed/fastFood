@@ -4,10 +4,12 @@ import { router } from "expo-router";
 import { useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { createUser } from "../../lib/appWrite";
+import useAuthStore from "../../store/auth.store";
 
 export default function Register() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const fetchAuthenticatedUser = useAuthStore((state) => state.fetchAuthenticatedUser);
 
   const handleSubmit = async () => {
     const { name, email, password } = form;
@@ -19,6 +21,7 @@ export default function Register() {
     try {
       //call appwrite
       await createUser({ email, password, name });
+      await fetchAuthenticatedUser();
       router.replace("/");
     } catch (error) {
       Alert.alert(error.message);
