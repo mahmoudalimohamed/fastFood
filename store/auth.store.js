@@ -16,7 +16,6 @@ const useAuthStore = create((set) => ({
     set({ isLoading: true });
     try {
       const user = await getCurrentUser();
-      console.log("ddddddddddddddd", user);
       if (user) {
         set({ isAuthenticated: true, user });
       } else {

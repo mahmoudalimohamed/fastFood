@@ -6,10 +6,13 @@ import { useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { signIn } from "../../lib/appWrite";
 import useAuthStore from "../../store/auth.store";
+
 export default function Login() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
-  const fetchAuthenticatedUser = useAuthStore((state) => state.fetchAuthenticatedUser);
+  const fetchAuthenticatedUser = useAuthStore(
+    (state) => state.fetchAuthenticatedUser
+  );
 
   const handleSubmit = async () => {
     const { email, password } = form;
