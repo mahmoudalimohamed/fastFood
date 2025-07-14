@@ -62,7 +62,7 @@ export default function Login() {
 
       <View className="flex-1 justify-center mt-  gap-2 ">
         <Text className="base-regular text-gray-100 text-center ">
-          Don't Have Account ?
+          Don`t Have Account ?
         </Text>
         <CustomButton
           title="Sign Up"
