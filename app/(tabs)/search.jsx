@@ -7,6 +7,7 @@ import CartButton from "../../components/CartButton";
 import MenuCart from "../../components/MenuCard";
 import { getCategories, getMenu } from "../../lib/appWrite";
 import useAppwrite from "../../lib/useAppwrite";
+
 export default function Search() {
   const params = useLocalSearchParams();
   const { category, query } = params;
@@ -14,11 +15,11 @@ export default function Search() {
   // Fetch menu items based on category and query
   const { data, loading, error, refetch } = useAppwrite({
     fn: getMenu,
-    params: { category, query, limit: 10 },
+    params: { category, query },
   });
 
   useEffect(() => {
-    refetch({ category, query, limit: 10 });
+    refetch({ category, query });
   }, [category, query]);
 
   // Fetch categories for filtering options
@@ -31,7 +32,7 @@ export default function Search() {
 
     return (
       <View className={cn("flex-1 max-w-[48%]", !isEven ? "mt-10" : "mt-0")}>
-        <MenuCart />
+        <MenuCart item={item} />
       </View>
     );
   };

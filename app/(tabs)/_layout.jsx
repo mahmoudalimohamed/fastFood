@@ -21,9 +21,9 @@ export default function TabsLayout() {
           shadowRadius: 4, // for iOS shadow
           height: 60,
           borderRadius: 25,
-          marginHorizontal: 10,
+          marginHorizontal: 5,
           paddingHorizontal: 10,
-          marginVertical: 5,
+          marginVertical: 0,
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
