@@ -1,9 +1,7 @@
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
-import useAuthStore from "@/store/auth.store";
 import cn from "clsx";
 import {
-  Button,
   FlatList,
   Image,
   Pressable,
@@ -11,13 +9,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function index() {
-  const LogoutButton = () => {
-    const logout = useAuthStore((state) => state.logout);
-    return <Button title="Logout" onPress={logout} />;
-  };
   const listItemes = ({ item, index }) => {
     const isEven = index % 2 === 0;
     return (
@@ -57,7 +50,7 @@ export default function index() {
   const listHeader = (
     <View className="flex-between flex-row w-full my-5 px-1 ">
       <View className="flex-start">
-        <Text className="small-bold text-primary">Delever To</Text>
+        <Text className="small-bold text-primary">Deliver To</Text>
         <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
           <Text className="paragraph-bold text-dark-100">Alex</Text>
           <Image
@@ -72,14 +65,12 @@ export default function index() {
   );
 
   return (
-    <SafeAreaView className="flex-1 bg-white  px-1 ">
-      <FlatList
-        data={offers}
-        showsVerticalScrollIndicator={false}
-        renderItem={listItemes}
-        ListHeaderComponent={listHeader}
-        ListFooterComponent={LogoutButton}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={offers}
+      showsVerticalScrollIndicator={false}
+      renderItem={listItemes}
+      ListHeaderComponent={listHeader}
+      contentContainerClassName="p-2 pb-20"
+    />
   );
 }

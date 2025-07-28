@@ -60,7 +60,7 @@ export default function Search() {
       renderItem={ItemList}
       keyExtractor={(item) => item.$id}
       numColumns={2}
-      columnWrapperClassName="gap-7"
+      columnWrapperClassName="gap-2"
       contentContainerClassName="gap-5 p-4 pb-20"
       ListHeaderComponent={headerContant}
       ListEmptyComponent={() =>
