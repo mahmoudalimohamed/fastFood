@@ -4,10 +4,11 @@ import { useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CartButton from "../../components/CartButton";
+import Filter from "../../components/Filter";
 import MenuCart from "../../components/MenuCard";
+import SearchBar from "../../components/SearchBar";
 import { getCategories, getMenu } from "../../lib/appWrite";
 import useAppwrite from "../../lib/useAppwrite";
-
 export default function Search() {
   const params = useLocalSearchParams();
   const { category, query } = params;
@@ -15,11 +16,11 @@ export default function Search() {
   // Fetch menu items based on category and query
   const { data, loading, error, refetch } = useAppwrite({
     fn: getMenu,
-    params: { category, query },
+    params: { categories: category, query },
   });
 
   useEffect(() => {
-    refetch({ category, query });
+    refetch({ categories: category, query });
   }, [category, query]);
 
   // Fetch categories for filtering options
@@ -41,22 +42,19 @@ export default function Search() {
     <View className="my-5 gap-5">
       <View className="flex-between flex-row w-full">
         <View className="flex-start">
-          <Text className="small-bold uppercase text-primary">Search</Text>
-          <View className="flex-start flex-row gap-x-1 mt-0.5">
-            <Text className="paragraph-semibold text-dark-100">
-              find your favorite food
-            </Text>
-          </View>
+          <Text className=" text-center text-2xl text-primary">
+            find your favorite food
+          </Text>
         </View>
         <CartButton />
       </View>
-      <Text>Search Input</Text>
-      <Text>Filter</Text>
+      <SearchBar />
+      <Filter categories={categories} />
     </View>
   );
 
   return (
-    <SafeAreaView className="bg-white h-full">
+    <SafeAreaView className=" h-full">
       <FlatList
         data={data}
         renderItem={ItemList}

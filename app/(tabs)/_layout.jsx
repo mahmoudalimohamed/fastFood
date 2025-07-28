@@ -8,26 +8,17 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#FE8C00", // primary color
-        tabBarInactiveTintColor: "#5D5F6D", // gray color
+        tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "black",
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#fff",
           borderTopWidth: 0,
-          elevation: 5, // for Android shadow
-          shadowColor: "#1a1a1a", // for iOS shadow
-          shadowOffset: { width: 0, height: 2 }, // for iOS shadow
-          shadowOpacity: 0.1, // for iOS shadow
-          shadowRadius: 4, // for iOS shadow
           height: 60,
           borderRadius: 25,
-          marginHorizontal: 5,
-          paddingHorizontal: 10,
-          marginVertical: 0,
-          justifyContent: "center",
-          alignItems: "center",
           position: "absolute",
+          backgroundColor: "#FE8C00",
         },
+        tabBarIconStyle: { marginTop: 8 },
       }}
     >
       <Tabs.Screen
