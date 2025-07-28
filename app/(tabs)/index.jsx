@@ -55,7 +55,7 @@ export default function index() {
   };
 
   const listHeader = (
-    <View className="flex-between flex-row w-full my-5">
+    <View className="flex-between flex-row w-full my-5 ">
       <View className="flex-start">
         <Text className="small-bold text-primary">Delever To</Text>
         <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
@@ -75,9 +75,9 @@ export default function index() {
     <SafeAreaView className="flex-1 bg-white">
       <FlatList
         data={offers}
+        showsVerticalScrollIndicator={false}
         renderItem={listItemes}
         ListHeaderComponent={listHeader}
-        contentContainerClassName="pd-28 px-1"
         ListFooterComponent={LogoutButton}
       />
     </SafeAreaView>

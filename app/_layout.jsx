@@ -39,12 +39,12 @@ export default Sentry.wrap(function RootLayout() {
   }, [fetchAuthenticatedUser]);
 
   if (!fontsLoaded || isLoading) {
-    return null; // or a loading screen component
+    return null;
   }
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1, padding: 2 }}>
-        <Stack screenOptions={{ headerShown: false }}>
+        <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         </Stack>

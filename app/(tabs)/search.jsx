@@ -2,7 +2,6 @@ import cn from "clsx";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import CartButton from "../../components/CartButton";
 import Filter from "../../components/Filter";
 import MenuCart from "../../components/MenuCard";
@@ -54,21 +53,21 @@ export default function Search() {
   );
 
   return (
-    <SafeAreaView className=" h-full">
-      <FlatList
-        data={data}
-        renderItem={ItemList}
-        keyExtractor={(item) => item.$id}
-        numColumns={2}
-        columnWrapperClassName="gap-7"
-        contentContainerClassName="gap-5 p-4 pb-20"
-        ListHeaderComponent={headerContant}
-        ListEmptyComponent={() =>
-          !loading && (
-            <Text className="text-center text-dark-100">No results found</Text>
-          )
-        }
-      />
-    </SafeAreaView>
+    <FlatList
+      className=" bg-white"
+      showsVerticalScrollIndicator={false}
+      data={data}
+      renderItem={ItemList}
+      keyExtractor={(item) => item.$id}
+      numColumns={2}
+      columnWrapperClassName="gap-7"
+      contentContainerClassName="gap-5 p-4 pb-20"
+      ListHeaderComponent={headerContant}
+      ListEmptyComponent={() =>
+        !loading && (
+          <Text className="text-center text-dark-100">No results found</Text>
+        )
+      }
+    />
   );
 }
