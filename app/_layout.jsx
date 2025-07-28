@@ -2,6 +2,7 @@ import useAuthStore from "@/store/auth.store";
 import * as Sentry from "@sentry/react-native";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import { StatusBar, useColorScheme } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
 import useCustomFonts from "../hooks/useCustomFonts";
@@ -26,6 +27,7 @@ Sentry.init({
 
 export default Sentry.wrap(function RootLayout() {
   const { fontsLoaded, error } = useCustomFonts();
+  const colorScheme = useColorScheme();
 
   useEffect(() => {
     if (error) throw error;
@@ -43,7 +45,18 @@ export default Sentry.wrap(function RootLayout() {
   }
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, padding: 2 }}>
+      <StatusBar
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+        backgroundColor="transparent"
+        translucent
+      />
+      <SafeAreaView
+        style={{
+          flex: 1,
+          padding: 2,
+          backgroundColor: colorScheme === "dark" ? "#000" : "#fff",
+        }}
+      >
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
