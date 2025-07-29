@@ -70,7 +70,7 @@ export default function index() {
       showsVerticalScrollIndicator={false}
       renderItem={listItemes}
       ListHeaderComponent={listHeader}
-      contentContainerClassName="p-2 pb-20"
+      contentContainerClassName="p-2 pb-20 bg-white"
     />
   );
 }

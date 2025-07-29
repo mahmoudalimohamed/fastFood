@@ -26,7 +26,7 @@ const MenuCard = ({ item: { $id, image_url, name, price } }) => {
       >
         {name}
       </Text>
-      <Text className="body-regular text-gray-200 mb-4">From ${price}</Text>
+      <Text className="body-regular text-gray-200 mb-4">{price}</Text>
       <TouchableOpacity
         onPress={() =>
           addItem({

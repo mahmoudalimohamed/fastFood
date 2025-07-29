@@ -1,14 +1,25 @@
 import useAuthStore from "@/store/auth.store";
-import { Button } from "react-native";
+import { Button, Text, View } from "react-native";
+
+function LogoutButton() {
+  const logout = useAuthStore((state) => state.logout);
+  return <Button title="Logout" onPress={logout} />;
+}
+
+function ViewUser({ user }) {
+  return (
+    <View>
+      <Text>{user?.name}</Text>
+      <Text>{user?.email}</Text>
+    </View>
+  );
+}
 
 export default function Profile() {
-  const LogoutButton = () => {
-    const logout = useAuthStore((state) => state.logout);
-    return <Button title="Logout" onPress={logout} />;
-  };
-
+  const { user } = useAuthStore();
   return (
     <>
+      <ViewUser user={user} />
       <LogoutButton />
     </>
   );
